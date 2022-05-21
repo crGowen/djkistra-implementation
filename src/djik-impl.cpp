@@ -96,7 +96,7 @@ Graph::ErrState Graph::RunDjikstrasAlgorithm(const std::string& start, const std
 		return ErrState::nodeNotFound;
 	}
 
-	for (Node n : this->nodes) {
+	for (Node &n : this->nodes) {
 		n.isLocked = false;
 		n.associatedCost = -1;
 	}
@@ -114,7 +114,6 @@ Graph::ErrState Graph::RunDjikstrasAlgorithm(const std::string& start, const std
 			if (this->nodes[c.index].associatedCost < 0
 				||
 				(this->nodes[currentNode].associatedCost + c.cost) < this->nodes[c.index].associatedCost) {
-
 				this->nodes[c.index].associatedCost = this->nodes[currentNode].associatedCost + c.cost;
 				this->nodes[c.index].priorNode = currentNode;
 			}
